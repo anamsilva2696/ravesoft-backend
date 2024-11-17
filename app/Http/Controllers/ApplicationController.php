@@ -71,7 +71,8 @@ class ApplicationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $applications = Application::findOrFail($id);
+        return view('applications.edit', compact('applications'));
     }
 
     /**
