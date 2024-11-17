@@ -12,5 +12,6 @@ class Application extends Model
         'phone',
         'area',
         'message',
+        'user_id',
     ];
 }

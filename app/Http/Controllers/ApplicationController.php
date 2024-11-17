@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -50,7 +51,9 @@ class ApplicationController extends Controller
         ]);
 
         
-        //dd($request->all());
+       
+        $userId = Auth::id();
+        $validatedData['user_id'] = $userId; // Get the logged-in user's ID
 
         Application::create($validatedData);
 
