@@ -31,6 +31,7 @@
                 <td>{{ $application->area }}</td>
                 <td>{{ $application->message }}</td>
                 <td>
+                    <a href="{{ route('applications.show', $application->id) }}" class="btn btn-info btn-sm">Details</a>
                     <a href="{{ route('applications.edit', $application->id) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('applications.destroy', $application->id) }}" method="POST" style="display: inline-block;">
                         @csrf <!-- Add CSRF Token -->

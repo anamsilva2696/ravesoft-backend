@@ -63,7 +63,10 @@ class ApplicationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $application = Application::findOrFail($id);
+
+        // Pass the candidatura to the view
+        return view('applications.show', compact('application'));
     }
 
     /**
