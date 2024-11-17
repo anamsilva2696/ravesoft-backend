@@ -117,4 +117,10 @@ class ApplicationController extends Controller
         return redirect()->route('applications.index')
         ->with('success', 'Application deleted successfully!');
     }
+
+    public function getApplications()
+    {
+        $applications = Application::all(); // Retrieve all applications
+        return response()->json($applications);
+    }
 }
