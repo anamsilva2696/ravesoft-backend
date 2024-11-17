@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h1>List of Applications</h1>
     <table class="table">
         <thead>
@@ -19,9 +24,9 @@
             @foreach($applications as $application)
             <tr>
                 <td>{{ $application->id }}</td>
-                <td>{{ $application->nome }}</td>
+                <td>{{ $application->name }}</td>
                 <td>{{ $application->email }}</td>
-                <td>{{ $application->telefone }}</td>
+                <td>{{ $application->phone }}</td>
                 <td>{{ $application->area }}</td>
                 <td>{{ $application->message }}</td>
             </tr>

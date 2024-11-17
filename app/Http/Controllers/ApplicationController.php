@@ -29,6 +29,7 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
         // Validate form inputs
@@ -43,14 +44,18 @@ class ApplicationController extends Controller
             'email.required' => 'The email field is required.',
             'email.email' => 'Please provide a valid email address.',
             'phone.required' => 'The phone number field is required.',
-            'phone.regex' => 'The phone number must be between 10 and 15 digits.',
+            'phone.regex' => 'The phone number must be 9 digits.',
             'area.required' => 'Please select an area of interest.',
             'message.required' => 'Please message field is required.',
         ]);
 
+        
+        //dd($request->all());
+
         Application::create($validatedData);
 
-        return redirect()->back()->with('success', 'Application submitted successfully!');
+        return redirect()->route('applications.index')
+        ->with('success', 'Application submitted successfully!');
     }
 
     /**

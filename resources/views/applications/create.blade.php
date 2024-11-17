@@ -2,26 +2,33 @@
 
 @section('content')
 <div class="container">
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <h1>New Application</h1>
     <form action="{{ route('applications.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control" required>
+            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" >
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
+
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" id="email" class="form-control" required>
+            <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" >
+            @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
+
         <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="phone" name="phone" id="phone" class="form-control" required>
+            <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') }}" >
+            @error('phone')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
+
         <div class="mb-3">
             <label for="area" class="form-label">Area of Interest</label>
             <div class="form-check">
@@ -41,11 +48,15 @@
                 <label class="form-check-label" for="radio_other">Other</label>
             </div>
         </div>
+
         <div class="mb-3">
             <label for="message" class="form-label">Message</label>
-            <textarea name="message" id="message" class="form-control"></textarea>
+            <textarea id="message" name="message" class="form-control">{{ old('message') }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        @error('message')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 @endsection

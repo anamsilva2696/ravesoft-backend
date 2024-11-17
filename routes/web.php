@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::resource('applications', ApplicationController::class);
+Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+
