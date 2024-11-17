@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h1>New Application</h1>
     <form action="{{ route('applications.store') }}" method="POST">
         @csrf

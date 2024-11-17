@@ -31,7 +31,26 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate form inputs
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|regex:/^[0-9]{9}$/',
+            'area' => 'required|in:development,marketing,design,other',
+            'message' => 'required|string|max:1000',
+        ], [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'phone.required' => 'The phone number field is required.',
+            'phone.regex' => 'The phone number must be between 10 and 15 digits.',
+            'area.required' => 'Please select an area of interest.',
+            'message.required' => 'Please message field is required.',
+        ]);
+
+        Application::create($validatedData);
+
+        return redirect()->back()->with('success', 'Application submitted successfully!');
     }
 
     /**
