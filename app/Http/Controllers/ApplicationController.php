@@ -108,6 +108,10 @@ class ApplicationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $candidatura = Application::findOrFail($id);
+        $candidatura->delete();
+
+        return redirect()->route('applications.index')
+        ->with('success', 'Application deleted successfully!');
     }
 }

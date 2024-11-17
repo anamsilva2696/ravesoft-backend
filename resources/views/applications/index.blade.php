@@ -33,8 +33,9 @@
                 <td>
                     <a href="{{ route('applications.edit', $application->id) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('applications.destroy', $application->id) }}" method="POST" style="display: inline-block;">
+                        @csrf <!-- Add CSRF Token -->
                         @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Excluir</button>
                     </form>
                 </td>
             </tr>
