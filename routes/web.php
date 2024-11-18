@@ -6,6 +6,7 @@ use App\Http\Controllers\ApplicationController;
 
 
 Route::get('/', function () {
+    
     return redirect('/login');
 });
 
