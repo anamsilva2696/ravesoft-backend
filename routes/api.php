@@ -6,5 +6,6 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/applications', [ApplicationController::class, 'getApplicationsByUser']);
+Route::middleware('auth:sanctum')->post('/saveapplication', [ApplicationController::class, 'saveApplication']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
