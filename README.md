@@ -48,12 +48,12 @@ Ensure you have the following installed on your machine:
    ```bash
     php artisan migrate --seed
    
-8. Run database migrations:
+8. Start the development server:
    ```bash
     php artisan serve
 
-9. Run database migrations:
+9. The admin panel is available at:
    ```bash
-    http://localhost:8000/api
+    http://localhost:8000/
 
 
