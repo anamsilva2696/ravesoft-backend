@@ -28,6 +28,10 @@ class LoginController extends Controller
 
             if ($user->is_admin) {
                 return redirect()->intended('/applications');
+            } else {
+                return back()->withErrors([
+                    'email' => 'This user does not have access.',
+                ]);
             }
         }
 
