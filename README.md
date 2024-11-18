@@ -1,4 +1,4 @@
-# Frontend Application - Vue.js
+# Backend Application - Laravel
 
 This is the backend application of the full-stack system, built using Laravel. It provides RESTful APIs for user authentication and managing applications.
 This project include the CRUD admin page for applications asked on the second challange and the login authentication and api system asked on the third challange.
