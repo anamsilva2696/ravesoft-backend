@@ -121,9 +121,36 @@ class ApplicationController extends Controller
         ->with('success', 'Application deleted successfully!');
     }
 
-    public function getApplications()
+    /*Api methods*/
+
+    public function getApplicationsByUser(Request $request)
     {
-        $applications = Application::all(); // Retrieve all applications
-        return response()->json($applications);
+        // Validate user_id
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        // Fetch applications for the user
+        $applications = Application::where('user_id', $request->user_id)->get();
+
+        return response()->json([
+            'applications' => $applications,
+        ], 200);
+    }
+
+    public function saveApplication(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'area' => 'required|string',
+            'message' => 'required|string',
+            'user_id' => 'required|integer|exists:users,id',
+        ]);
+
+        $application = Application::create($validated);
+
+        return response()->json(['message' => 'Application saved successfully!', 'application' => $application], 201);
     }
 }
